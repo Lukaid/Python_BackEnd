@@ -50,19 +50,19 @@
 </br>
 
 3. 파이썬에서는 자료형도 클래스다!
-```python
-a = 10
-b = '문자열 객체'
-c = True
+    ```python
+    a = 10
+    b = '문자열 객체'
+    c = True
 
-print(type(a))
-print(type(b))
-print(type(c))
+    print(type(a))
+    print(type(b))
+    print(type(c))
 
->>> <class 'int'>
->>> <class 'str'>
->>> <class 'bool'>
-```
+    >>> <class 'int'>
+    >>> <class 'str'>
+    >>> <class 'bool'>
+    ```
 
 </br>
 
@@ -70,3 +70,91 @@ print(type(c))
     - 클래스들의 중복을 제거하고 유지보수를 편하게 하기위해 사용.
     - 자식클래스가 부모클래스의 속성과 메서드를 가져올 수 있음
     - 메서드 오버라이딩: 부모 클래스의 메서드를 자식 클래스에서 재정의
+
+
+#### 2. module
+
+1. module?
+    - 한 개의 완성된 프로그램 파일
+    - 내장모듈: 파이썬 설치 시 자동으로 설치되는 모듈
+    - 외부모듈: 다른 사람이 만든 파이썬 파일을 pip로 설치해서 사용
+
+</br>
+
+2. module을 사용하는 법
+
+    ```python
+    import math
+    print(math.pi)
+    print(math.ceil(2.5))
+
+    or
+
+    from math import pi, ceil
+    print(pi)
+    print(ceil(2.5))
+
+    or
+
+    from math import pi, ceil as c
+    print(pi)
+    print(c(2.5))
+    ```
+
+</br>
+
+3. `if __name__ == "__main__":` 이란?
+    - 해당 파일을 직접 실행했을 떄만 실행된다.
+    - 예를 들어,
+    ```python
+    # 외부에서 모듈을 실행하면 __name__이 "__main__"이 아닌 해당 모듈의 이름을 반환함
+    # module.ipynb
+    print(pay_module.__name__)
+
+    >>> pay_module
+
+    # pay_module.py
+    print(__name__)
+
+    >>> __main__
+    ```
+
+</br>
+
+4. package
+    - 관련 있는 모둘을 하나의 폴더로 구성해 놓은 것.
+    ```
+    startcoding/
+        unit/
+            __init__.py
+            character.py
+            item.py
+            monster.py
+        main.py
+    ```
+
+    ```python
+    # 1. import 패키지.모듈
+
+    import unit.character
+    unit.character.test()
+
+    # 2. from 패키지 import 모듈
+
+    from unit import item
+    item.test()
+
+    # 3. from 패키지 import *
+
+    from unit import *
+    character.test()
+    item.test()
+    monster.test()
+
+    # 4. import 패키지
+
+    import unit
+    unit.character.test()
+    unit.item.test()
+    unit.monster.test()
+    ```
