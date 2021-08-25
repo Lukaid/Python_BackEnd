@@ -156,3 +156,64 @@ map(func, [-1, 0, 1, 2])
   - is-a 관계는 타입 또는 클래스 간의 has-a 관계와는 대조됩니다. has-a 및 is-a 관계들 간의 혼동은 실세계 관계 모델에 대한 설계에 있어 자주 발견되는 에러입니다. is-a 관계는 또한 객체 또는 타입 간의 instance-of 관계와도 대조됩니다.
 - has-a:
   - has-a는 구성 관계를 의미하며 한 오브젝트(구성된 객체, 또는 부분/멤버 객체라고도 부릅니다)가 다른 오브젝트(composite type이라고 부릅니다)에 "속한다(belongs to)"를 말합니다. 단순히 말해, has-a 관계는 객체의 멤버 필드라고 불리는 객체를 말하며, Multiple has-a 관계는 소유 계층구조를 형성하기 위해 결합하는 경우를 말합니다.
+
+#### 6. 데이터베이스
+
+- 파이썬에서 SQLite 사용방법
+- DDL(CREATE, ALTER, DROP)
+- DML(INSERT, SELECT, UPDATE, DELETE)
+
+1. 데이터베이스란?
+
+- 데이터베이스의 개념
+  - 구조화된 데이터의 집합 (like 엑셀)
+- 데이터베이스 구성요소
+  - 데이터베이스 (database): 테이블(table)의 집합
+  - 테이블 (table): 행(row)의 집합
+  - 행 (row): 한 단위의 데이터 기록(record)
+  - 열 (column): 데이터의 항목 (field)
+- DBMS(DataBase Management System)
+  - 데이터베이스를 관리해주는 시스템
+    - 클라이언트가 SQL을 이용하여 서버에 명령을 내리면 서버가 클라이언트에 응답을 함
+    - ex) MySQL, Oracle, SQLite (파이썬 내장)
+- SQL이란 무엇인가?
+
+  - Structured Query Language
+  - 데이터베이스를 관리하기 위해 사용되는 언어
+  - SQL의 종류
+    1. DDL (Data Definition Language)
+       데이터 정의 언어 (CREATE, ALTER, DROP)
+    2. DML (Data Manipulation Language)
+       데이터 조작 언어 (INSERT, SELECT, UPDATE, DELETE)
+
+- DB Browser for SQLite 설치
+  [공홈](https://sqlitebrowser.org/dl/)
+  홈브류를 통해 설치
+  ```zsh
+  $ brew install --cask db-browser-for-sqlite
+  ```
+
+2. DDL
+
+- SQLite 데이터 타입
+  | 데이터타입 | 설명 |
+  | ---------- | ----------- |
+  | integer | 정수 |
+  | real | 실수 |
+  | text | 문자열 |
+  | null | 데이터 없음 |
+
+- SQL CREATE
+  - 테이블 생성 명령(쿼리)
+  ```SQL
+  CREATE TABLE 테이블명 (컬럼명1 데이터타입, 컬럼명2 데이터타입);
+  CREATE TABLE post (id integer primary key, title text not null default '제목없음', content text default '내용없음');
+  CREATE TABLE user (id integer primary key autoincrement, nickname text unique);
+  ```
+  - 제약조건
+  1. primary key: 기본키, 레코드를 구분 짓는 값
+  2. not null: 데이터가 비어있을 수 없다.
+  3. default: 기본값
+  4. unique: 중복 불가
+- SQL DROP
+- Sqlite3 browser 설치 및 사용법
