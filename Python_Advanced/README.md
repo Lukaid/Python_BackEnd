@@ -249,3 +249,64 @@ map(func, [-1, 0, 1, 2])
 5. 병렬성 프로그래밍
    - 멀티코어, 프로세스가 여러개 존재
    - 실제로 작업이 동시에 실행됨, 프로세스를 여러개 만들어서 동시에 실행
+
+#### 9. 함수 고급
+
+1. 일급 객체
+
+- 데이터처럼 사용 할 수 있다.
+
+  - 함수를 변수에 할당이 가능함.
+
+    ```python
+    def func(x, y):
+        return x+y
+
+    add = func
+    print(add(1, 2))
+    ```
+
+  - 리스트(튜플, 딕셔너리 등 자료구조)에 할당 가능
+
+    ```python
+    def mul(x, y):
+        return x*y
+
+    def div(x, y):
+        return x/y
+
+    calculator = [mul, div]
+    print(calculator[0][3, 4])
+    ```
+
+- 매개변수에 넘겨 줄 수 있다.
+
+  ```python
+  def inputData():
+      data = input("데이터 입력")
+      return data
+
+  def start(func):
+      print("입력한 데이터는", func())
+
+  start(inputData)
+  ```
+
+- 리턴값으로 사용될 수 있다.
+
+  ```python
+  def plusTen(a):
+      return a + 10
+
+  def func(x):
+      return plusTen(x)
+
+  print(func(5))
+  ```
+
+- 파이썬에선 함수도 일급객체임.
+
+2. 클로저
+3. 이터레이터
+4. 제너레이터
+5. 데코레이터
